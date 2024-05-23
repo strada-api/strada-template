@@ -5,6 +5,10 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,9 +21,37 @@ jobs:
         with:
           node-version: 16
 
+      # Build using rush
       - name: Verify Change Logs
         run: node common/scripts/install-run-rush.js change --verify
       - name: Rush Install
         run: node common/scripts/install-run-rush.js install
       - name: Rush rebuild
         run: node common/scripts/install-run-rush.js rebuild --verbose
+
+      - name: Configure AWS Credentials
+        id: creds
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::257838883645:role/GitHub
+          aws-region: us-east-1
+          output-credentials: true
+
+      - name: Install Amazon ECR Docker Credential Helper # Requried to securly log in to AWS ECR. `docker login` with `aws ecr get-login-password` is insecure.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y amazon-ecr-credential-helper
+
+      - name: Configure Docker to use ECR Credential Helper
+        run: |
+          mkdir -p ~/.docker
+          echo '{"credsStore": "ecr-login"}' > ~/.docker/config.json
+
+      - name: Push Docker image
+        env:
+          ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
+          ECR_REPOSITORY: databases-db
+        run: |
+          chmod 744 databases/db/docker-build.sh
+          databases/db/docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY --db_url ${{ secrets.DB_URL }}
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY
