@@ -52,6 +52,9 @@ jobs:
           ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
           ECR_REPOSITORY: databases-db
         run: |
-          chmod 744 databases/db/docker-build.sh
-          databases/db/docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY --db_url ${{ secrets.DB_URL }}
+          MAIN_WORK_DIR=$PWD
+          cd databases/db
+          chmod 744 docker-build.sh
+          ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY --db_url ${{ secrets.DB_URL }}
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
+          cd $MAIN_WORK_DIR
