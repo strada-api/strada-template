@@ -61,6 +61,7 @@ jobs:
         env:
           ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
           ECR_REPOSITORY: databases-db
+          INFISICAL_TOKEN: ${{ env.INFISICAL_TOKEN }}
         run: |
           MAIN_WORK_DIR=$PWD
           cd databases/db
