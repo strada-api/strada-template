@@ -22,29 +22,29 @@ jobs:
           node-version: 20
 
       # Build using rush
-      - name: Rush Install
-        run: node common/scripts/install-run-rush.js install
-      - name: Rush rebuild
-        run: node common/scripts/install-run-rush.js rebuild --verbose
+      # - name: Rush Install
+      #   run: node common/scripts/install-run-rush.js install
+      # - name: Rush rebuild
+      #   run: node common/scripts/install-run-rush.js rebuild --verbose
 
       # Setup AWS
-      - name: Configure AWS Credentials
-        id: creds
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: arn:aws:iam::257838883645:role/GitHub
-          aws-region: us-east-1
-          output-credentials: true
+      # - name: Configure AWS Credentials
+      #   id: creds
+      #   uses: aws-actions/configure-aws-credentials@v4
+      #   with:
+      #     role-to-assume: arn:aws:iam::257838883645:role/GitHub
+      #     aws-region: us-east-1
+      #     output-credentials: true
 
-      - name: Install Amazon ECR Docker Credential Helper # Requried to securly log in to AWS ECR. `docker login` with `aws ecr get-login-password` is insecure.
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y amazon-ecr-credential-helper
+      # - name: Install Amazon ECR Docker Credential Helper # Requried to securly log in to AWS ECR. `docker login` with `aws ecr get-login-password` is insecure.
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y amazon-ecr-credential-helper
 
-      - name: Configure Docker to use ECR Credential Helper
-        run: |
-          mkdir -p ~/.docker
-          echo '{"credsStore": "ecr-login"}' > ~/.docker/config.json
+      # - name: Configure Docker to use ECR Credential Helper
+      #   run: |
+      #     mkdir -p ~/.docker
+      #     echo '{"credsStore": "ecr-login"}' > ~/.docker/config.json
 
       # Setup Infisical
       - name: Install Infisical CLI
