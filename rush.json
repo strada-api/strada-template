@@ -314,6 +314,10 @@
     {
       "packageName": "databases-db",
       "projectFolder": "databases/db"
+    },
+    {
+      "packageName": "servers-express",
+      "projectFolder": "servers/express"
     }
     // {
     //   /**
