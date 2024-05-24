@@ -64,7 +64,7 @@ jobs:
 
       - name: Deploy Porter stack DB
         timeout-minutes: 30
-        run: exec porter app update-tag databases-db --tag latest
+        run: exec porter app update-tag databases-db-worker --tag latest
         env:
           PORTER_CLUSTER: 3917
           PORTER_HOST: https://dashboard.getporter.dev
