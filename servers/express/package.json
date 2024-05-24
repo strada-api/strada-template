@@ -7,7 +7,7 @@
     "build": "tsc",
     "tsc": "tsc --noEmit",
     "start": "infisical run --env=prod --domain=https://strada-temp-1-service-3887-51be8161-ruo3m20i.onporter.run/api --path=/ --projectId=99f10251-80f5-40c8-b3ca-2e8ccc750300 node dist/index.js",
-    "dev": "infisical run --env=dev --path=/ -- nodemon -T src/index.ts"
+    "dev":"nodemon -T src/index.ts"
   },
   "dependencies": {
     "@infisical/sdk": "^2.1.9",

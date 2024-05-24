@@ -10,8 +10,9 @@ app.use(express.json());
 // Routes
 app.get("/", async (_, res) => {
   try {
-    const result = await db.select().from(user);
-    res.send(JSON.stringify(result));
+    // const result = await db.select().from(user);
+    // res.send(JSON.stringify(result));
+    res.send("hello world");
   } catch (e) {
     res.status(500).send(e);
   }
