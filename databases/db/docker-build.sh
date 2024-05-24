@@ -18,5 +18,5 @@ done
 if [ -z "$image_name" ]; then
     image_name="databases-db"
 fi
-
+echo "build script token $INFISICAL_TOKEN"
 docker build -t $image_name .
