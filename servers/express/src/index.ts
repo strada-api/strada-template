@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import { db } from "../../../databases/db/src/index";
 import { user } from "../../../databases/db/src/schema/user";
+import { user2 } from "../../../databases/db/src/schema/user2";
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(express.json());
 // Routes
 app.get("/", async (_, res) => {
   try {
-    const result = await db.select().from(user);
+    const result = await db.select().from(user2);
     res.send(JSON.stringify(result));
   } catch (e) {
     res.status(500).send(e);
