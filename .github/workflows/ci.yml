@@ -22,29 +22,33 @@ jobs:
           node-version: 20
 
       # Build using rush
-      # - name: Rush Install
-      #   run: node common/scripts/install-run-rush.js install
-      # - name: Rush rebuild
-      #   run: node common/scripts/install-run-rush.js rebuild --verbose
+      - name: Rush Install
+        run: node common/scripts/install-run-rush.js install
+      - name: Rush rebuild
+        run: node common/scripts/install-run-rush.js rebuild --verbose
 
       # Setup AWS
-      # - name: Configure AWS Credentials
-      #   id: creds
-      #   uses: aws-actions/configure-aws-credentials@v4
-      #   with:
-      #     role-to-assume: arn:aws:iam::257838883645:role/GitHub
-      #     aws-region: us-east-1
-      #     output-credentials: true
+      - name: Configure AWS Credentials
+        id: creds
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::257838883645:role/GitHub
+          aws-region: us-east-1
+          output-credentials: true
 
-      # - name: Install Amazon ECR Docker Credential Helper # Requried to securly log in to AWS ECR. `docker login` with `aws ecr get-login-password` is insecure.
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install -y amazon-ecr-credential-helper
+      - name: Install Amazon ECR Docker Credential Helper # Requried to securly log in to AWS ECR. `docker login` with `aws ecr get-login-password` is insecure.
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y amazon-ecr-credential-helper
 
-      # - name: Configure Docker to use ECR Credential Helper
-      #   run: |
-      #     mkdir -p ~/.docker
-      #     echo '{"credsStore": "ecr-login"}' > ~/.docker/config.json
+      - name: Configure Docker to use ECR Credential Helper
+        run: |
+          mkdir -p ~/.docker
+          echo '{"credsStore": "ecr-login"}' > ~/.docker/config.json
+
+      # Setup Porter
+      - name: Setup porter
+        uses: porter-dev/setup-porter@v0.1.0
 
       # Setup Infisical
       - name: Install Infisical CLI
@@ -53,9 +57,6 @@ jobs:
           sudo apt-get update && sudo apt-get install -y infisical
           INFISICAL_TOKEN="$(infisical login --method=universal-auth --client-id=${{ secrets.INFISICAL_CLIENT_ID }} --client-secret=${{ secrets.INFISICAL_CLIENT_SECRET }} --domain https://strada-temp-1-service-3887-51be8161-ruo3m20i.onporter.run/api --plain --silent)"
           echo "INFISICAL_TOKEN=$INFISICAL_TOKEN" >> $GITHUB_ENV
-
-      # - name: Setup porter
-      #   uses: porter-dev/setup-porter@v0.1.0
 
       - name: Push Docker image DB
         env:
