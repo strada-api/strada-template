@@ -1,9 +1,10 @@
 FROM node:20-alpine
 
+RUN echo "env vars: ECR_REGISTRY-$ECR_REGISTRY INFISICAL_TOKEN-$INFISICAL_TOKEN"
+
 WORKDIR /app
 COPY . .
 
-RUN echo env vars: ECR_REGISTRY-$ECR_REGISTRY INFISICAL_TOKEN-$INFISICAL_TOKEN
 
 # Inject Infisical secrets
 RUN apk add --no-cache bash curl && curl -1sLf \
