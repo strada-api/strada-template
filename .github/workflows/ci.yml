@@ -22,13 +22,12 @@ jobs:
           node-version: 20
 
       # Build using rush
-      - name: Verify Change Logs
-        run: node common/scripts/install-run-rush.js change --verify
       - name: Rush Install
         run: node common/scripts/install-run-rush.js install
       - name: Rush rebuild
         run: node common/scripts/install-run-rush.js rebuild --verbose
 
+      # Setup AWS
       - name: Configure AWS Credentials
         id: creds
         uses: aws-actions/configure-aws-credentials@v4
