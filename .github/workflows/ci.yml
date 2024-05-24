@@ -47,7 +47,10 @@ jobs:
           mkdir -p ~/.docker
           echo '{"credsStore": "ecr-login"}' > ~/.docker/config.json
 
-      - name: Push Docker image
+      - name: Setup porter
+        uses: porter-dev/setup-porter@v0.1.0
+
+      - name: Push Docker image DB
         env:
           ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
           ECR_REPOSITORY: databases-db
@@ -59,12 +62,30 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
           cd $MAIN_WORK_DIR
 
-      - name: Setup porter
-        uses: porter-dev/setup-porter@v0.1.0
-
-      - name: Deploy Porter stack
+      - name: Deploy Porter stack DB
         timeout-minutes: 30
         run: exec porter app update-tag databases-db-job --tag latest
+        env:
+          PORTER_CLUSTER: 3917
+          PORTER_HOST: https://dashboard.getporter.dev
+          PORTER_PROJECT: 10773
+          PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
+
+      - name: Push Docker image express
+        env:
+          ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
+          ECR_REPOSITORY: servers-express
+        run: |
+          MAIN_WORK_DIR=$PWD
+          cd servers/express
+          chmod 744 docker-build.sh
+          ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY --inf_client_id ${{ secrets.INFISICAL_CLIENT_ID }} --inf_client_secret ${{ secrets.INFISICAL_CLIENT_SECRET }}
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY
+          cd $MAIN_WORK_DIR
+
+      - name: Deploy Porter stack express
+        timeout-minutes: 30
+        run: exec porter app update-tag servers-express --tag latest
         env:
           PORTER_CLUSTER: 3917
           PORTER_HOST: https://dashboard.getporter.dev
