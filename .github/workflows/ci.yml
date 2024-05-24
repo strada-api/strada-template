@@ -71,14 +71,14 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
           cd $MAIN_WORK_DIR
 
-      # - name: Deploy Porter stack DB
-      #   timeout-minutes: 30
-      #   run: exec porter app update-tag databases-db-worker --tag latest
-      #   env:
-      #     PORTER_CLUSTER: 3917
-      #     PORTER_HOST: https://dashboard.getporter.dev
-      #     PORTER_PROJECT: 10773
-      #     PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
+      - name: Deploy Porter stack DB
+        timeout-minutes: 30
+        run: exec porter app update-tag databases-db-worker --tag latest
+        env:
+          PORTER_CLUSTER: 3917
+          PORTER_HOST: https://dashboard.getporter.dev
+          PORTER_PROJECT: 10773
+          PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
 
       # - name: Install Infisical CLI
       #   run: |
