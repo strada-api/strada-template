@@ -54,26 +54,20 @@ jobs:
           INFISICAL_TOKEN="$(infisical login --method=universal-auth --client-id=${{ secrets.INFISICAL_CLIENT_ID }} --client-secret=${{ secrets.INFISICAL_CLIENT_SECRET }} --domain https://strada-temp-1-service-3887-51be8161-ruo3m20i.onporter.run/api --plain --silent)"
           echo "INFISICAL_TOKEN=$INFISICAL_TOKEN" >> $GITHUB_ENV
 
-      - name: Test token
-        env:
-          INFISICAL_TOKEN: ${{ env.INFISICAL_TOKEN }}
-        run: |
-          echo "Using the variable INFISICAL_TOKEN: $INFISICAL_TOKEN"
-
       # - name: Setup porter
       #   uses: porter-dev/setup-porter@v0.1.0
 
-      # - name: Push Docker image DB
-      #   env:
-      #     ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
-      #     ECR_REPOSITORY: databases-db
-      #   run: |
-      #     MAIN_WORK_DIR=$PWD
-      #     cd databases/db
-      #     chmod 744 docker-build.sh
-      #     ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY --db_url ${{ secrets.DB_URL }}
-      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY
-      #     cd $MAIN_WORK_DIR
+      - name: Push Docker image DB
+        env:
+          ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
+          ECR_REPOSITORY: databases-db
+        run: |
+          MAIN_WORK_DIR=$PWD
+          cd databases/db
+          chmod 744 docker-build.sh
+          ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY
+          cd $MAIN_WORK_DIR
 
       # - name: Deploy Porter stack DB
       #   timeout-minutes: 30
