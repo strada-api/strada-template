@@ -71,6 +71,11 @@ jobs:
           PORTER_PROJECT: 10773
           PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
 
+      - name: Install Infisical CLI
+        run: |
+          curl -1sLf 'https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.deb.sh' | sudo -E bash
+          sudo apt-get update && sudo apt-get install -y infisical
+
       - name: Push Docker image express
         env:
           ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
