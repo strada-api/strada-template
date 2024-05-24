@@ -61,12 +61,11 @@ jobs:
         env:
           ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
           ECR_REPOSITORY: databases-db
-          INFISICAL_TOKEN: ${{ env.INFISICAL_TOKEN }}
         run: |
           MAIN_WORK_DIR=$PWD
           cd databases/db
           chmod 744 docker-build.sh
-          ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY
+          INFISICAL_TOKEN=${{ env.INFISICAL_TOKEN }} ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
           cd $MAIN_WORK_DIR
 
