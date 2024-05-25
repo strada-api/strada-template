@@ -58,6 +58,7 @@ jobs:
           INFISICAL_TOKEN="$(infisical login --method=universal-auth --client-id=${{ secrets.INFISICAL_CLIENT_ID }} --client-secret=${{ secrets.INFISICAL_CLIENT_SECRET }} --domain https://strada-temp-1-service-3887-51be8161-ruo3m20i.onporter.run/api --plain --silent)"
           echo "INFISICAL_TOKEN=$INFISICAL_TOKEN" >> $GITHUB_ENV
 
+      # Deploy databases
       - name: Push Docker image - databases-db
         env:
           ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
@@ -80,6 +81,7 @@ jobs:
           PORTER_PROJECT: 10773
           PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
 
+      # Deploy servers
       - name: Push Docker image - servers-express
         env:
           ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
@@ -101,3 +103,9 @@ jobs:
           PORTER_HOST: https://dashboard.getporter.dev
           PORTER_PROJECT: 10773
           PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
+
+      # Deploy clients
+      - name: Deploy to S3
+        run: aws s3 sync dist/ s3://vite-react-app-ci --delete
+        env:
+          AWS_REGION: us-east-1
