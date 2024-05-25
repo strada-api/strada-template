@@ -318,6 +318,10 @@
     {
       "packageName": "servers-express",
       "projectFolder": "servers/express"
+    },
+    {
+      "packageName": "clients-vite",
+      "projectFolder": "clients/vite"
     }
     // {
     //   /**
