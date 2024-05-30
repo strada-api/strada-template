@@ -50,6 +50,13 @@
       "when": 1716599648220,
       "tag": "0006_clumsy_groot",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1717100180403,
+      "tag": "0007_crazy_talkback",
+      "breakpoints": true
     }
   ]
 }
