@@ -72,9 +72,9 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
           cd $MAIN_WORK_DIR
 
-      - name: Deploy Porter stack - databases-db-worker
+      - name: Deploy Porter stack - databases-db-one-off
         timeout-minutes: 30
-        run: exec porter app update-tag databases-db-worker --tag latest --wait
+        run: exec porter app update-tag databases-db-one-off --tag latest --wait
         env:
           PORTER_CLUSTER: 3917
           PORTER_HOST: https://dashboard.getporter.dev

@@ -12,5 +12,4 @@ WORKDIR /app
 COPY . .
 RUN npm install
 
-
-
+CMD ["npm", "run", "migrate:prod"]
