@@ -8,7 +8,7 @@
     "migrate": "drizzle-kit migrate",
     "migrate:dev": "infisical run --env=dev --path=/ -- npm run migrate",
     "migrate:prod": "infisical run --env=prod --domain=https://strada-temp-1-service-3887-51be8161-ruo3m20i.onporter.run/api --path=/ --projectId=99f10251-80f5-40c8-b3ca-2e8ccc750300 npm run migrate",
-    "build": "npm run generate"
+    "build": "echo no build required for databases-db"
   },
   "keywords": [],
   "author": "",
