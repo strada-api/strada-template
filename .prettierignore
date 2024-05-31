@@ -78,4 +78,5 @@ common/autoinstallers/*/.npmrc
 **/dist
 
 # Rush scripts
+# Required because formatting cause SHA mis-match
 common/scripts
