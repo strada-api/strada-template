@@ -76,3 +76,6 @@ common/autoinstallers/*/.npmrc
 
 # Build folders
 **/dist
+
+# Rush scripts
+common/scripts
