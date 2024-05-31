@@ -1,5 +1,5 @@
-import cors from "cors";
-import express from "express";
+import cors from 'cors';
+import express from 'express';
 
 const app = express();
 
@@ -8,9 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.get("/", async (_, res) => {
+app.get('/', async (_, res) => {
   try {
-    res.send("Hello world!");
+    res.send('Hello world!');
   } catch (e) {
     res.status(500).send(e);
   }

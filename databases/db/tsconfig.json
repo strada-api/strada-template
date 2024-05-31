@@ -1,24 +1,23 @@
 {
-    "compilerOptions": {
-      // Basic
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "target": "ESNext",
-      "verbatimModuleSyntax": false,
-      "allowJs": false,
-      "resolveJsonModule": true,
-      "moduleDetection": "force",
-      "allowImportingTsExtensions": true,  
-      "noEmit": true,
+  "compilerOptions": {
+    // Basic
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "verbatimModuleSyntax": false,
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
 
+    // Strictness
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
 
-      // Strictness
-      "strict": true,
-      "noUncheckedIndexedAccess": true,
-  
-      // Compiler
-      "moduleResolution": "NodeNext",
-      "module": "NodeNext",
-      "outDir": "dist"
-    }
+    // Compiler
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "outDir": "dist"
   }
+}

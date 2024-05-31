@@ -1,27 +1,26 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "type": "chrome",
-        "request": "launch",
-        "name": "Next.js: browser",
-        "url": "http://localhost:5173",
-        "webRoot": "${workspaceFolder}/clients/vite"
-      },
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "Servers - express",
-        "localRoot": "${workspaceFolder}/servers/express",
-        "runtimeExecutable": "rushx",
-        "args": ["dev"],
-        "resolveSourceMapLocations": [
-          "${workspaceFolder}/servers/express/**",
-          "!**{workspaceFolder}/servers/express/node_modules/**"
-        ],
-        "skipFiles": ["<node_internals>/**"],
-        "console": "integratedTerminal"
-      },
-    ],
-  }
-  
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Next.js: browser",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/clients/vite"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Servers - express",
+      "localRoot": "${workspaceFolder}/servers/express",
+      "runtimeExecutable": "rushx",
+      "args": ["dev"],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/servers/express/**",
+        "!**{workspaceFolder}/servers/express/node_modules/**"
+      ],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal"
+    }
+  ]
+}

@@ -1,21 +1,21 @@
 {
-    "compilerOptions": {
-      // Basic
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "target": "ES2016",
-      "verbatimModuleSyntax": false,
-      "allowJs": false,
-      "resolveJsonModule": true,
-      "moduleDetection": "force",
-  
-      // Strictness
-      "strict": true,
-      "noUncheckedIndexedAccess": true,
-  
-      // Compiler
-      "moduleResolution": "NodeNext",
-      "module": "NodeNext",
-      "outDir": "dist"
-    }
+  "compilerOptions": {
+    // Basic
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "ES2016",
+    "verbatimModuleSyntax": false,
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+
+    // Strictness
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+
+    // Compiler
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "outDir": "dist"
   }
+}
