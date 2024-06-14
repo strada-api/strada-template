@@ -98,7 +98,7 @@ jobs:
           INFISICAL_TOKEN: ${{ env.INFISICAL_TOKEN }}
         run: |
           MAIN_WORK_DIR=$PWD
-          cd servers/express
+          cd common/deploy/servers/express
           chmod 744 docker-build.sh
           ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
