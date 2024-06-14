@@ -7,7 +7,7 @@ RUN apk add --no-cache bash curl && curl -1sLf \
 && apk add infisical
 
 WORKDIR /app
-COPY ../.. .
+COPY . .
 
 ENV INFISICAL_TOKEN=$infisical_token
 
