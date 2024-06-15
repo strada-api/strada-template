@@ -97,9 +97,9 @@ jobs:
 
       - name: Rush deploy server
         run: |
-          node common/scripts/install-run-rush.js deploy --project servers-express --target-folder ${{ env.INFISICAL_TOKEN }}
+          node common/scripts/install-run-rush.js deploy --project servers-express --target-folder ${{ env.SERVER_DEPLOY_DIR }}
           MAIN_WORK_DIR=$PWD
-          cd ${{ env.INFISICAL_TOKEN }}
+          cd ${{ env.SERVER_DEPLOY_DIR }}
           mv servers/express/docker-build.sh docker-build.sh
           mv servers/express/Dockerfile Dockerfile
           cd $MAIN_WORK_DIR
@@ -111,7 +111,7 @@ jobs:
           INFISICAL_TOKEN: ${{ env.INFISICAL_TOKEN }}
         run: |
           MAIN_WORK_DIR=$PWD
-          cd ${{ env.INFISICAL_TOKEN }}
+          cd ${{ env.SERVER_DEPLOY_DIR }}
           chmod 744 docker-build.sh
           ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
