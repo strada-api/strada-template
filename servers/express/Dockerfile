@@ -8,7 +8,6 @@ RUN apk add --no-cache bash curl && curl -1sLf \
 
 WORKDIR /app
 COPY . .
-RUN npm install
 
 ENV INFISICAL_TOKEN=$infisical_token
 
