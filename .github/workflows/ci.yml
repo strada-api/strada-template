@@ -26,14 +26,6 @@ jobs:
         run: node common/scripts/install-run-rush.js install
       - name: Rush rebuild
         run: node common/scripts/install-run-rush.js rebuild --verbose
-      - name: Rush deploy
-        run: |
-          node common/scripts/install-run-rush.js deploy --project servers-express --target-folder common/deploy/servers-express
-          MAIN_WORK_DIR=$PWD
-          cd common/deploy/servers-express
-          mv servers/express/docker-build.sh docker-build.sh
-          mv servers/express/Dockerfile Dockerfile
-          cd $MAIN_WORK_DIR
 
       # Setup AWS
       - name: Configure AWS Credentials
@@ -99,6 +91,19 @@ jobs:
       #     PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
 
       # Deploy servers
+      - name: Server environment variables
+        run: |
+          echo "SERVER_DEPLOY_DIR=common/deploy/servers-express" >> $GITHUB_ENV
+
+      - name: Rush deploy server
+        run: |
+          node common/scripts/install-run-rush.js deploy --project servers-express --target-folder ${{ env.INFISICAL_TOKEN }}
+          MAIN_WORK_DIR=$PWD
+          cd ${{ env.INFISICAL_TOKEN }}
+          mv servers/express/docker-build.sh docker-build.sh
+          mv servers/express/Dockerfile Dockerfile
+          cd $MAIN_WORK_DIR
+
       - name: Push Docker image - servers-express
         env:
           ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
@@ -106,7 +111,7 @@ jobs:
           INFISICAL_TOKEN: ${{ env.INFISICAL_TOKEN }}
         run: |
           MAIN_WORK_DIR=$PWD
-          cd common/deploy/servers-express
+          cd ${{ env.INFISICAL_TOKEN }}
           chmod 744 docker-build.sh
           ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
