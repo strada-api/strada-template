@@ -28,10 +28,11 @@ jobs:
         run: node common/scripts/install-run-rush.js rebuild --verbose
       - name: Rush deploy
         run: |
-          node common/scripts/install-run-rush.js deploy
+          node common/scripts/install-run-rush.js deploy --project servers-express --target-folder common/deploy/servers-express
           MAIN_WORK_DIR=$PWD
-          cd common/deploy
-          node create-links.js create 
+          cd common/deploy/servers-express
+          mv servers/express/docker-build.sh docker-build.sh
+          mv servers/express/Dockerfile Dockerfile
           cd $MAIN_WORK_DIR
 
       # Setup AWS
@@ -105,7 +106,7 @@ jobs:
           INFISICAL_TOKEN: ${{ env.INFISICAL_TOKEN }}
         run: |
           MAIN_WORK_DIR=$PWD
-          cd common/deploy/servers/express
+          cd common/deploy/servers-express
           chmod 744 docker-build.sh
           ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
