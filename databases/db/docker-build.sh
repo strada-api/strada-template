@@ -25,4 +25,4 @@ if [ -z "$image_name" ]; then
     usage
 fi
 
-docker build --build-arg infisical_token=$INFISICAL_TOKEN  -t $image_name .
+docker build --build-arg infisical_token=$INFISICAL_TOKEN -t $image_name .

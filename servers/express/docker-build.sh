@@ -2,7 +2,7 @@
 
 # Function to display usage
 usage() {
-    echo "Usage: $0 --image_name IMAGE_NAME "
+    echo "Usage: $0 --image_name IMAGE_NAME"
     exit 1
 }
 
