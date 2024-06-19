@@ -1,0 +1,43 @@
+{
+  "id": "8158640f-97f9-4aee-bcab-9a5844a4afa1",
+  "prevId": "c79c5c88-6c88-447e-934b-116d30dfcf02",
+  "version": "6",
+  "dialect": "postgresql",
+  "tables": {
+    "public._dummy": {
+      "name": "_dummy",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "address": {
+          "name": "address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

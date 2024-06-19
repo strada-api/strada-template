@@ -59,38 +59,6 @@ jobs:
           echo "INFISICAL_TOKEN=$INFISICAL_TOKEN" >> $GITHUB_ENV
 
       # Deploy databases
-      # - name: Push Docker image - databases-db
-      #   env:
-      #     ECR_REGISTRY: 257838883645.dkr.ecr.us-east-1.amazonaws.com
-      #     ECR_REPOSITORY: databases-db
-      #     INFISICAL_TOKEN: ${{ env.INFISICAL_TOKEN }}
-      #   run: |
-      #     MAIN_WORK_DIR=$PWD
-      #     cd databases/db
-      #     chmod 744 docker-build.sh
-      #      ./docker-build.sh --image_name $ECR_REGISTRY/$ECR_REPOSITORY
-      #     docker push $ECR_REGISTRY/$ECR_REPOSITORY
-      #     cd $MAIN_WORK_DIR
-
-      # - name: Deploy Porter stack - databases-db-one-off
-      #   timeout-minutes: 30
-      #   run: exec porter app update-tag databases-db-one-off --tag latest --wait
-      #   env:
-      #     PORTER_CLUSTER: 3917
-      #     PORTER_HOST: https://dashboard.getporter.dev
-      #     PORTER_PROJECT: 10773
-      #     PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
-
-      # - name: Deploy Porter stack - databases-db-one-off migrate
-      #   timeout-minutes: 30
-      #   run: exec porter app run databases-db-one-off --job databases-db-one-off-service --wait
-      #   env:
-      #     PORTER_CLUSTER: 3917
-      #     PORTER_HOST: https://dashboard.getporter.dev
-      #     PORTER_PROJECT: 10773
-      #     PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
-
-      # Deploy databases
       - name: Database environment variables
         run: |
           echo "DATABASE_DEPLOY_DIR=common/deploy/databases-db" >> $GITHUB_ENV

@@ -1,0 +1,1 @@
+ALTER TABLE "_dummy" ADD COLUMN "address" text;
