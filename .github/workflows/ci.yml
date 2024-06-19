@@ -117,6 +117,15 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
           cd $MAIN_WORK_DIR
 
+      - name: Deploy Porter stack - databases-db-one-off
+        timeout-minutes: 30
+        run: exec porter app update-tag databases-db-one-off --tag latest --wait
+        env:
+          PORTER_CLUSTER: 3917
+          PORTER_HOST: https://dashboard.getporter.dev
+          PORTER_PROJECT: 10773
+          PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
+
       - name: Deploy Porter stack - databases-db-one-off migrate
         timeout-minutes: 30
         run: exec porter app run databases-db-one-off --job databases-db-one-off-service --wait
