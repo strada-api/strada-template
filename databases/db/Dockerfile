@@ -11,8 +11,6 @@ ENV INFISICAL_TOKEN=$infisical_token
 WORKDIR /app
 COPY . .
 
-# Create node dependency links
-RUN node create-links.js create
 WORKDIR /app/databases/db
 
 CMD ["npm", "run", "migrate:prod"]
