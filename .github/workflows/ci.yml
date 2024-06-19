@@ -127,7 +127,7 @@ jobs:
           PORTER_TOKEN: ${{ secrets.PORTER_TOKEN }}
 
       # Deploy clients
-      # - name: Deploy to S3
-      #   run: aws s3 sync clients/vite/dist/ s3://vite-react-app-ci --delete
-      #   env:
-      #     AWS_REGION: us-east-1
+      - name: Deploy to S3
+        run: aws s3 sync clients/vite/dist/ s3://vite-react-app-ci --delete
+        env:
+          AWS_REGION: us-east-1
