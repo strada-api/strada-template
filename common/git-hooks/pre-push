@@ -1,0 +1,10 @@
+#!/bin/sh
+LINES=$(git remote -v | grep strada-api/strada-template.git | wc -l)
+
+current_dirname=$(basename "$PWD")
+if [ "$current_dirname" = "strada-template" ]; then
+	exit 0
+else
+	echo "Change remote origin from strada-api/strada-template.git"
+	exit $LINES
+fi
