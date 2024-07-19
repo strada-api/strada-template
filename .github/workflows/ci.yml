@@ -1,7 +1,7 @@
 name: CI
 on:
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  push:
+    branches: ['main']
 
 permissions:
   id-token: write # This is required for requesting the JWT
