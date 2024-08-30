@@ -47,7 +47,7 @@ Enter domain for your self hosted Infisical service.
 
 Example: `https://strada-temp-1-service-3887-51be8161-ruo3m20i.onporter.run` 
 
-<img width="816" alt="infis3" src="https://github.com/user-attachments/assets/3bd1f9cd-1c57-4eab-b14c-68e6ab14d539">
+<img width="571" alt="infis3" src="https://github.com/user-attachments/assets/cfbacaa8-f560-4c6c-a916-e820abe13979">
 
 Complete login in browser popup
 
