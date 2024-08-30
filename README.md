@@ -41,7 +41,7 @@ infisical login
 ```
 <img width="410" alt="infis1" src="https://github.com/user-attachments/assets/9c6db595-3b6b-4e8d-9abf-fe71d5cfa841">
 
-<img width="571" alt="infis2" src="https://github.com/user-attachments/assets/c70d519b-bc56-407f-a9b2-35b321ab6380">
+<img width="407" alt="infis2" src="https://github.com/user-attachments/assets/c01e518e-98b3-4e08-80d4-d136bf209f4c">
 
 Enter domain for your self hosted Infisical service. 
 
