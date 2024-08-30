@@ -39,20 +39,19 @@ brew install infisical/get-cli/infisical
 # Login
 infisical login
 ```
+<img width="410" alt="infis1" src="https://github.com/user-attachments/assets/9c6db595-3b6b-4e8d-9abf-fe71d5cfa841">
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ab6278d1-7a7a-4a39-b5bf-eb6974e328e0/640dd959-f156-42c1-9688-cdc55fbae110/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ab6278d1-7a7a-4a39-b5bf-eb6974e328e0/aba70764-c482-453f-8df7-70410642eedd/Untitled.png)
+<img width="571" alt="infis2" src="https://github.com/user-attachments/assets/c70d519b-bc56-407f-a9b2-35b321ab6380">
 
 Enter domain for your self hosted Infisical service. 
 
 Example: `https://strada-temp-1-service-3887-51be8161-ruo3m20i.onporter.run` 
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ab6278d1-7a7a-4a39-b5bf-eb6974e328e0/932f999e-6e5d-475e-b7d9-0ffbcf86a047/Untitled.png)
+<img width="816" alt="infis3" src="https://github.com/user-attachments/assets/3bd1f9cd-1c57-4eab-b14c-68e6ab14d539">
 
 Complete login in browser popup
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ab6278d1-7a7a-4a39-b5bf-eb6974e328e0/3ea4e509-fd31-4e2f-918f-eb2cb32f789f/Untitled.png)
+<img width="816" alt="infis4" src="https://github.com/user-attachments/assets/b6a10910-392a-4b27-92fe-740d3f8ab747">
 
 ### 3. Run the server
 
@@ -63,6 +62,11 @@ rushx dev
 
 Server start on [http://localhost:3005](http://localhost:3005/). Visit the URL in the browser you should see:
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ab6278d1-7a7a-4a39-b5bf-eb6974e328e0/603ff26c-a881-4dd0-8ecf-0b61ec3ce308/Untitled.png)
+<img width="821" alt="server" src="https://github.com/user-attachments/assets/130cb7b8-3325-41ca-8cfc-829c4cc45c25">
 
 ### 4. Run DB migration
+
+```jsx
+cd databases/db
+rushx migrate:dev
+```
